@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React from "react";
 import Article from "./components/Article";
 import Header from "./components/Header";
 import Home from "./components/Home";
@@ -16,10 +17,10 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/articles">
+          <Route exact path="/articles/:article_id">
             <Article />
           </Route>
-          <Route exact path="/postcomment">
+          <Route exact path="/articles/:article_id/comments">
             <PostComment />
           </Route>
           <Route>
