@@ -15,7 +15,9 @@ const Header = () => {
         </Link>
       </section>
       <section className="header_centre">
-        <h1 className="header_title">FAKE NEWS</h1>
+        <Link to="/">
+          <h1 className="header_title">FAKE NEWS</h1>
+        </Link>
       </section>
       <section className="header_right">
         <Link to="www.linkedin.com/in/alexander-swain">
