@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Header.css";
 import { Link } from "react-router-dom";
+import LogIn from "./Login";
 
 const Header = () => {
   return (
@@ -11,8 +12,11 @@ const Header = () => {
             src="https://as2.ftcdn.net/v2/jpg/01/38/69/89/500_F_138698989_ekcoWNH5KmFNmTqjJl0vlHtp9Yvm8aXd.jpg"
             alt=""
             className="header_logo"
-          />{" "}
+          />
         </Link>
+        <section className="header_login">
+          <LogIn />
+        </section>
       </section>
       <section className="header_centre">
         <Link to="/">
@@ -20,9 +24,13 @@ const Header = () => {
         </Link>
       </section>
       <section className="header_right">
-        <Link to="www.linkedin.com/in/alexander-swain">
-          <i id="header_linkedin" class="fab fa-linkedin"></i>
-        </Link>
+        <a
+          href="https://www.linkedin.com/in/alexander-swain"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <i id="header_linkedin" className="fab fa-linkedin"></i>
+        </a>
       </section>
     </div>
   );

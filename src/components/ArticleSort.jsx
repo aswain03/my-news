@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { useEffect, useState } from "react";
 import { getTopics } from "../utils/api";
+import { Link } from "react-router-dom";
 import "../styles/Nav.css";
 
-const Nav = () => {
+const ArticleSort = () => {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
@@ -14,12 +15,15 @@ const Nav = () => {
 
   return (
     <div className="nav">
-      <p className="nav_dropdown">dropdown</p>
       <ul className="nav_topics">
         {topics.map((topic) => {
           return (
-            <li key={topic.slug} className="nav_topic">
-              <Link className="nav_topicLink" to={`/topics/${topic.slug}`}>
+            <li className="nav_topic">
+              <Link
+                className="nav_topicLink"
+                to={`/topics/${topic.slug}`}
+                key={topic.slug}
+              >
                 {topic.slug}
               </Link>
             </li>
@@ -30,4 +34,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default ArticleSort;

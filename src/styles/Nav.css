@@ -2,7 +2,7 @@
   width: 100%;
   height: 30px;
   background-color: black;
-  position: sticky;
+
   top: 0%;
   display: flex;
   align-items: center;
@@ -10,6 +10,9 @@
 
 .nav_topics {
   padding-left: 350px;
+}
+.nav_dropdown {
+  color: #999;
 }
 
 .nav_topic {
