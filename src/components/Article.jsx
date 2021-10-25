@@ -8,20 +8,25 @@ import "../styles/Article.css";
 const Article = () => {
   const [article, setArticle] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [invalidId, setInvalidId] = useState(false);
   const { article_id } = useParams();
-  // console.log(article);
+
   useEffect(() => {
     setIsLoading(true);
+    setInvalidId(true);
     getArticle(article_id)
       .then((articleFromApi) => {
-        // console.log(articleFromApi);
         setArticle(articleFromApi.article[0]);
         setIsLoading(false);
+        setInvalidId(false);
       })
       .catch((err) => {
+        setInvalidId(true);
         console.dir(err);
       });
   }, [article_id]);
+
+  if (invalidId) return <p className="invalid">Finding the page...</p>;
 
   if (isLoading) {
     return <p className="isLoading">Biting our nails...</p>;

@@ -4,18 +4,21 @@ import { useState, useEffect } from "react";
 import { getArticles } from "../utils/api";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import Nav from "./Nav";
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
-  const [sortBy] = useState("created_at");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [sortBy, setSortBy] = useState("created_at");
+
   const { topic } = useParams();
+
   useEffect(() => {
     setIsLoading(true);
     getArticles({ topic, sortBy })
       .then((articlesFromApi) => {
         setArticles(() => {
-          return articlesFromApi.articles;
+          return [...articlesFromApi.articles];
         });
         setIsLoading(false);
       })
@@ -30,11 +33,15 @@ const Home = () => {
 
   return (
     <div className="home">
+      <Nav setSortBy={setSortBy} sortBy={sortBy} />
       <ul className="home_articleList">
         {articles.map((article) => {
           return (
             <li key={article.article_id} className="home_articleListSingle">
-              <Link to={`/articles/${article.article_id}`}>
+              <Link
+                className="home_link"
+                to={`/articles/${article.article_id}`}
+              >
                 <section className="home_article">
                   <p className="home_topic">{article.topic}</p>
                   <h2 className="home_title">{article.title}</h2>

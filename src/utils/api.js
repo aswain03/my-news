@@ -25,10 +25,7 @@ export const getArticle = async (article_id) => {
 };
 
 export const getComments = async (article_id) => {
-  const { data } = await fakeNewsApi.get(
-    `/articles/${article_id}/comments`,
-    {}
-  );
+  const { data } = await fakeNewsApi.get(`/articles/${article_id}/comments`);
   return data.comments;
 };
 
@@ -37,10 +34,15 @@ export const postComment = async (article_id, username, body) => {
     body,
     username,
   });
-  return data.comments;
+  return data.comment;
 };
 
-export const getVotes = async (article_id, num) => {
+export const deleteComment = async (comment_id) => {
+  const { data } = await fakeNewsApi.delete(`comments/${comment_id}`);
+  return data;
+};
+
+export const patchVotes = async (article_id, num) => {
   const { data } = await fakeNewsApi.patch(`articles/${article_id}`, {
     inc_votes: num,
   });
@@ -48,6 +50,11 @@ export const getVotes = async (article_id, num) => {
 };
 
 export const getUser = async (username) => {
-  const res = await fakeNewsApi.get(`users/${username}`);
-  return res.data.user;
+  const { data } = await fakeNewsApi.get(`users/${username}`);
+  return data.user;
+};
+
+export const getUsersData = async () => {
+  const { data } = await fakeNewsApi.get(`/users`);
+  return data.users;
 };

@@ -1,17 +1,19 @@
-import { useContext, useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../context/User";
 import { postComment } from "../utils/api";
 import { useParams } from "react-router";
-import "../styles/PostComment.css";
-import { UserContext } from "../context/User";
+import "../styles/Article.css";
 
 const PostComment = ({ setComments }) => {
   const [addComment, setAddComment] = useState("");
+  const [isError, setIsError] = useState(false);
+  const { signIn } = useContext(UserContext);
   const { article_id } = useParams();
-  const { user } = useContext(UserContext);
 
   const handleComment = (event) => {
     event.preventDefault();
-    postComment(article_id, addComment, user.username)
+    setIsError(false);
+    postComment(article_id, addComment, signIn.username)
       .then((commentFromApi) => {
         setComments((currComments) => {
           const copyCurrComments = [...currComments];
@@ -21,14 +23,21 @@ const PostComment = ({ setComments }) => {
         setAddComment("");
       })
       .catch((err) => {
+        setIsError(true);
         console.dir(err);
       });
   };
+
+  if (isError)
+    return (
+      <p className="isError">This is not the page you are looking for...</p>
+    );
+
   return (
     <div className="postcomment">
       <form className="postComment_form" onSubmit={handleComment}>
         <input
-          type="text"
+          type="textarea"
           value={addComment}
           onChange={(event) => setAddComment(event.target.value)}
           className="post_commentInput"

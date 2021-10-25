@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../styles/Header.css";
 import { Link } from "react-router-dom";
-import LogIn from "./Login";
+import { UserContext } from "../context/User";
 
 const Header = () => {
+  const { signIn, setSignIn } = useContext(UserContext);
+
+  const handleSignIn = (event) => {
+    event.preventDefault();
+    setSignIn({ username: "jessjelly" });
+  };
+
   return (
     <div className="header">
       <section className="header_left">
@@ -15,7 +22,11 @@ const Header = () => {
           />
         </Link>
         <section className="header_login">
-          <LogIn />
+          <form onSubmit={handleSignIn} className="login_form">
+            <button className="header_loginButton">
+              {signIn ? signIn.username : "Sign In"}
+            </button>
+          </form>
         </section>
       </section>
       <section className="header_centre">
