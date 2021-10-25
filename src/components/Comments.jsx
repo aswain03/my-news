@@ -28,12 +28,12 @@ const Comments = () => {
       });
   }, [article_id]);
 
-  const handleDeleteComment = (commentId) => {
-    deleteComment(commentId)
+  const handleDeleteComment = (comment_id) => {
+    deleteComment(comment_id)
       .then((oldComment) => {
         setComments((currComments) => {
           const newComments = currComments.filter(
-            (comment) => commentId !== comment.comment_id
+            (comment) => comment_id !== comment.comment_id
           );
           return newComments;
         });
@@ -60,7 +60,7 @@ const Comments = () => {
                 {signIn && signIn.username === comment.author && (
                   <button
                     className="comments_deletebutton"
-                    onClick={() => handleDeleteComment(comment.comment_Id)}
+                    onClick={() => handleDeleteComment(comment.comment_id)}
                   >
                     Delete
                   </button>

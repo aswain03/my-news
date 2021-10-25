@@ -29,10 +29,10 @@ export const getComments = async (article_id) => {
   return data.comments;
 };
 
-export const postComment = async (article_id, username, body) => {
+export const postComment = async (article_id, body, username) => {
   const { data } = await fakeNewsApi.post(`articles/${article_id}/comments`, {
-    body,
-    username,
+    body: body,
+    username: username,
   });
   return data.comment;
 };
