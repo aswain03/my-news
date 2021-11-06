@@ -24,7 +24,12 @@ const Header = () => {
               src="https://as2.ftcdn.net/v2/jpg/01/38/69/89/500_F_138698989_ekcoWNH5KmFNmTqjJl0vlHtp9Yvm8aXd.jpg"
               alt="FakeNews"
             />
-          </Link>
+          </Link>{" "}
+          <Flex>
+            <Link to="/" className="Link">
+              <h1>FAKE NEWS</h1>
+            </Link>
+          </Flex>
           <form onSubmit={handleSignIn}>
             <Button>{signIn ? signIn.username : "Sign In"}</Button>
           </form>
@@ -36,11 +41,6 @@ const Header = () => {
             <i id="linkedin" className="fab fa-linkedin"></i>
           </a>
         </Top>
-        <Flex>
-          <Link to="/" className="Link">
-            <h1>FAKE NEWS</h1>
-          </Link>
-        </Flex>
       </Container>
     </StyledHeader>
   );
