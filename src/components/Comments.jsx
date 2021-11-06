@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
+import { StyledCard } from "../styles/Card.styled";
 import { getComments, deleteComment } from "../utils/api";
 import { useParams } from "react-router";
-import "../styles/Article.css";
 import PostComment from "./PostComment";
 import { UserContext } from "../context/User";
 
@@ -48,30 +48,29 @@ const Comments = () => {
   if (isError) return <p className="isError">Chasing the hamsters...</p>;
 
   return (
-    <div className="comments">
-      <h1 className="comments_title">Comments</h1>
-      <section className="comments_list">
+    <div>
+      <h1>Comments</h1>
+      <section>{signIn && <PostComment setComments={setComments} />}</section>
+      <section>
         <ul>
           {comments.map((comment) => {
             return (
-              <li key={comment.comment_id} className="comments_singleList">
-                <p className="comments_author">{comment.author}</p>
-                <p className="comments_body">{comment.body}</p>
-                {signIn && signIn.username === comment.author && (
-                  <button
-                    className="comments_deletebutton"
-                    onClick={() => handleDeleteComment(comment.comment_id)}
-                  >
-                    Delete
-                  </button>
-                )}
-              </li>
+              <StyledCard>
+                <li key={comment.comment_id}>
+                  <p>{comment.author}</p>
+                  <p>{comment.body}</p>
+                  {signIn && signIn.username === comment.author && (
+                    <button
+                      onClick={() => handleDeleteComment(comment.comment_id)}
+                    >
+                      Delete
+                    </button>
+                  )}
+                </li>
+              </StyledCard>
             );
           })}
         </ul>
-      </section>
-      <section className="comments_new">
-        {signIn && <PostComment setComments={setComments} />}
       </section>
     </div>
   );

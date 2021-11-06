@@ -1,4 +1,4 @@
-import "../styles/Home.css";
+import { StyledCard } from "../styles/Card.styled";
 import React from "react";
 import { useState, useEffect } from "react";
 import { getArticles } from "../utils/api";
@@ -32,31 +32,28 @@ const Home = () => {
   }
 
   return (
-    <div className="home">
+    <section>
       <Nav setSortBy={setSortBy} sortBy={sortBy} />
-      <ul className="home_articleList">
+      <ul>
         {articles.map((article) => {
           return (
-            <li key={article.article_id} className="home_articleListSingle">
-              <Link
-                className="home_link"
-                to={`/articles/${article.article_id}`}
-              >
-                <section className="home_article">
-                  <p className="home_topic">{article.topic}</p>
-                  <h2 className="home_title">{article.title}</h2>
-                  <p className="home_timeStamp">{article.created_at}</p>
-                  <p className="home_comments">
-                    Comments:{article.comment_count}
-                  </p>
-                  <p className="name_author">By {article.author}</p>
-                </section>
-              </Link>
-            </li>
+            <Link to={`/articles/${article.article_id}`} className="Link">
+              <StyledCard>
+                <li key={article.article_id}>
+                  <section className="home_article">
+                    <p>{article.topic}</p>
+                    <h1>{article.title}</h1>
+                    <p>{article.created_at}</p>
+                    <p>Comments:{article.comment_count}</p>
+                    <p>By {article.author}</p>
+                  </section>
+                </li>
+              </StyledCard>
+            </Link>
           );
         })}
       </ul>
-    </div>
+    </section>
   );
 };
 

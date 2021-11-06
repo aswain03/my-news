@@ -3,7 +3,6 @@ import { useParams } from "react-router";
 import { getArticle } from "../utils/api";
 import Voting from "./Voting";
 import Comments from "./Comments";
-import "../styles/Article.css";
 
 const Article = () => {
   const [article, setArticle] = useState([]);
@@ -33,22 +32,20 @@ const Article = () => {
   }
 
   return (
-    <>
-      <div className="article">
-        <Comments />
-        <section className="article_votes">
-          <span className="article_voteButtons">
-            <Voting votes={article.votes} article_id={article_id} />
-          </span>
-        </section>
-        <section className="article_info">
-          <p className="article_topic">{article.topic}</p>
-          <h1 className="article_title">{article.title}</h1>
-          <p className="article_author">{article.author}</p>
-          <p className="article_body">{article.body}</p>
-        </section>
-      </div>
-    </>
+    <div>
+      <section>
+        <p>{article.topic}</p>
+        <h1>{article.title}</h1>
+        <p>{article.author}</p>
+        <p>{article.body}</p>
+      </section>
+      <Comments />
+      <section>
+        <span>
+          <Voting votes={article.votes} article_id={article_id} />
+        </span>
+      </section>
+    </div>
   );
 };
 

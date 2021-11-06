@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import { patchVotes } from "../utils/api";
-import "../styles/Article.css";
 import { UserContext } from "../context/User";
 
 const Voting = ({ votes, article_id }) => {
@@ -22,19 +21,11 @@ const Voting = ({ votes, article_id }) => {
   };
 
   return (
-    <div className="voting">
-      {signIn && (
-        <button className="voting_upvote" onClick={() => handleVotes(1)}>
-          Upvote
-        </button>
-      )}
-      <p className="voting_showVotes">{votes + votesNew}</p>
-      {signIn && (
-        <button className="voting_downvote" onClick={() => handleVotes(-1)}>
-          Downvote
-        </button>
-      )}
-      {error && <p className="voting_error">Try again later</p>}
+    <div>
+      {signIn && <button onClick={() => handleVotes(1)}>Upvote</button>}
+      <p>{votes + votesNew}</p>
+      {signIn && <button onClick={() => handleVotes(-1)}>Downvote</button>}
+      {error && <p>Try again later</p>}
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Button } from "../styles/Button.styled";
 import { getTopics } from "../utils/api";
 import { Link } from "react-router-dom";
-import "../styles/Header.css";
 
 const Nav = ({ setSortBy, sortBy }) => {
   const [topics, setTopics] = useState([]);
@@ -14,16 +14,16 @@ const Nav = ({ setSortBy, sortBy }) => {
 
   return (
     <>
-      <div className="nav">
-        <Link className="nav_alltopics" to="/">
+      <div>
+        <Link className="Link" to="/">
           All Topics
         </Link>
-        <ul className="nav_topics">
+        <ul>
           {topics.map((topic) => {
             return (
-              <li key={topic.slug} className="nav_topic">
+              <li key={topic.slug}>
                 <Link
-                  className="nav_topicLink"
+                  className="Link"
                   to={`/topics/${topic.slug}`}
                   key={topic.slug}
                 >
@@ -33,37 +33,37 @@ const Nav = ({ setSortBy, sortBy }) => {
             );
           })}
         </ul>
-        <div className="nav_sortbybuttons">
-          <button
+        <div>
+          <Button
             className={sortBy === "author" ? "selectedOrder" : "sort"}
             onClick={() => setSortBy("author")}
           >
             Author
-          </button>
-          <button
+          </Button>
+          <Button
             className={sortBy === "title" ? "selectedOrder" : "sort"}
             onClick={() => setSortBy("title")}
           >
             Title
-          </button>
-          <button
+          </Button>
+          <Button
             className={sortBy === "created_at" ? "selectedOrder" : "sort"}
             onClick={() => setSortBy("created_at")}
           >
             Newest
-          </button>
-          <button
+          </Button>
+          <Button
             className={sortBy === "votes" ? "selectedOrder" : "sort"}
             onClick={() => setSortBy("votes")}
           >
             Votes
-          </button>
-          <button
+          </Button>
+          <Button
             className={sortBy === "comment_count" ? "selectedOrder" : "sort"}
             onClick={() => setSortBy("comment_count")}
           >
             Comments
-          </button>
+          </Button>
         </div>
       </div>
     </>

@@ -2,7 +2,6 @@ import { useState, useContext } from "react";
 import { UserContext } from "../context/User";
 import { postComment } from "../utils/api";
 import { useParams } from "react-router";
-import "../styles/Article.css";
 
 const PostComment = ({ setComments }) => {
   const [addComment, setAddComment] = useState("");
@@ -28,22 +27,18 @@ const PostComment = ({ setComments }) => {
       });
   };
 
-  if (isError)
-    return (
-      <p className="isError">This is not the page you are looking for...</p>
-    );
+  if (isError) return <p>This is not the page you are looking for...</p>;
 
   return (
-    <div className="postcomment">
-      <form className="postComment_form" onSubmit={handleComment}>
+    <div>
+      <form onSubmit={handleComment}>
         <input
           type="textarea"
           value={addComment}
           onChange={(event) => setAddComment(event.target.value)}
-          className="post_commentInput"
           required
         />
-        <button className="postComment_submit">Post comment</button>
+        <button>Post comment</button>
       </form>
     </div>
   );
