@@ -11,8 +11,8 @@ import { Container } from "./styles/Container.styled";
 
 const theme = {
   colors: {
-    header: "#ebfbff",
-    body: "#fff",
+    header: "#45a29e",
+    body: "#1f2833",
     footer: "#003333",
   },
   mobile: "768px",

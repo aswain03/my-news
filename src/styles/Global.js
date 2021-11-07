@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
 }
 body {
   background: ${({ theme }) => theme.colors.body};
-  color: hsl(192, 100%, 9%);
+  color: #66fcf1;
   font-family: 'Poppins', sans-serif;
   font-size: 1.15em;
   margin: 0;
@@ -22,12 +22,12 @@ img {
 
 a{
     text-decoration: none;
-    color: hsl(192, 100%, 9%);
+    color: #66fcf1;
 }
     
 a:visited{
     text-decoration: none;
-    color: hsl(192, 100%, 9%);
+    color: #66fcf1;
 }
 ul {
     list-style-type: none;

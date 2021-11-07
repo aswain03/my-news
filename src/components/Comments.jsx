@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { StyledCard } from "../styles/Card.styled";
+import { Button } from "../styles/Button.styled";
 import { getComments, deleteComment } from "../utils/api";
 import { useParams } from "react-router";
 import PostComment from "./PostComment";
@@ -60,11 +61,11 @@ const Comments = () => {
                   <p>{comment.author}</p>
                   <p>{comment.body}</p>
                   {signIn && signIn.username === comment.author && (
-                    <button
+                    <Button
                       onClick={() => handleDeleteComment(comment.comment_id)}
                     >
                       Delete
-                    </button>
+                    </Button>
                   )}
                 </li>
               </StyledCard>

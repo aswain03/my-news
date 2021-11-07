@@ -1,0 +1,7 @@
+.buttons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  float: left;
+}

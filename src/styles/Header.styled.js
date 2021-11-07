@@ -16,6 +16,7 @@ export const Top = styled.div`
 `;
 
 export const Logo = styled.img`
+  border-radius: 30px;
   @media (max-width: ${({ theme }) => theme.mobile}) {
     margin-bottom: 40px;
   }

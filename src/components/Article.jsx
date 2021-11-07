@@ -39,11 +39,10 @@ const Article = () => {
         <p>{article.author}</p>
         <p>{article.body}</p>
       </section>
+      <Voting votes={article.votes} article_id={article_id} />
       <Comments />
       <section>
-        <span>
-          <Voting votes={article.votes} article_id={article_id} />
-        </span>
+        <span></span>
       </section>
     </div>
   );

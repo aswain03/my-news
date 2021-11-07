@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "../styles/Button.styled";
 import { getTopics } from "../utils/api";
 import { Link } from "react-router-dom";
+import "../styles/Nav.css";
 
 const Nav = ({ setSortBy, sortBy }) => {
   const [topics, setTopics] = useState([]);
@@ -16,7 +17,7 @@ const Nav = ({ setSortBy, sortBy }) => {
     <>
       <div>
         <Link className="Link" to="/">
-          All Topics
+          <Button className="buttons">All Topics</Button>
         </Link>
         <ul>
           {topics.map((topic) => {
@@ -27,11 +28,15 @@ const Nav = ({ setSortBy, sortBy }) => {
                   to={`/topics/${topic.slug}`}
                   key={topic.slug}
                 >
-                  {topic.slug}
+                  <Button className="buttons">{topic.slug}</Button>
                 </Link>
               </li>
             );
           })}
+          <br />
+          <br />
+          <br />
+          <br />
         </ul>
         <div>
           <Button
